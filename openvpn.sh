@@ -1,4 +1,3 @@
 #!/bin/sh
 
-sleep 5
-sudo openvpn --config /var/tmp/dockervpn/client-config/172.17.0.0.ovpn
+sudo openvpn --config /var/tmp/dockervpn/client-config/172.23.0.0.ovpn

@@ -1,0 +1,15 @@
+This project sets up a =curbside= docker network to be used by other projects
+and provides the configuration to access that network from a dev macOS setup.
+
+* Prerequisites
+
+1. =openvpn=
+2. =docker-compose=
+
+* Usage
+
+1. Run =make install= once to configure your mac.
+2. Run =docker-compose up= to create the =curbside= network, launch the VPN to
+   access it and the DNS server that will allow you to resolve names directly
+   from your macos host.
+3. Run =make connect= to connect your mac host to the VPN.
