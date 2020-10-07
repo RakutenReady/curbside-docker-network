@@ -13,3 +13,9 @@ and provides the configuration to access that network from a dev macOS setup.
    and the DNS server that will allow you to resolve names directly from your
    macos host.
 3. Run =make connect= to connect your mac host to the VPN.
+
+The last step should print a message confirming the initialization completed
+successfully:
+#+begin_src
+Initialization Sequence Completed
+#+end_src
