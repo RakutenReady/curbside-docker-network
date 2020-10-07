@@ -21,7 +21,7 @@ services:
       - 1194:1194/tcp
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /var/tmp/dockervpn/client-config:/etc/openvpn/client-config
+      - ./client-config:/etc/openvpn/client-config
 
   dns:
     container_name: devdns
