@@ -1,5 +1,7 @@
 #!/bin/sh
 
+rm client-config/*.ovpn
+
 docker-compose up -d
 
 # HACK: This is a dirty hack to disable the wildcard matching. The proper fix

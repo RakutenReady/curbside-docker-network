@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo openvpn --config ./client-config/172.23.0.0.ovpn
+ls ./client-config/*.ovpn | head -n 1 | xargs sudo sudo openvpn --config
