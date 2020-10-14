@@ -3,8 +3,19 @@ and provides the configuration to access that network from a dev macOS setup.
 
 * Prerequisites
 
-1. =openvpn=
-2. =docker-compose=
+** =docker-compose=
+Install [[https://hub.docker.com/editions/community/docker-ce-desktop-mac][docker desktop]]
+
+** =openvpn=
+
+#+BEGIN_SRC shell
+brew install openvpn
+#+END_SRC
+
+Make sure to export paths for `openvpn` bin in your ~/.zshrc
+#+BEGIN_SRC shell
+export PATH=/usr/local/opt/openvpn/sbin:$PATH
+#+END_SRC
 
 * Usage
 
