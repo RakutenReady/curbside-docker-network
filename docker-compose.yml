@@ -1,20 +1,15 @@
 version: "3.8"
 
 networks:
-  curbside:
-    name: curbside
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.23.0.0/24
+  default:
+    external:
+      name: ${DOCKER_NETWORK}
 
 services:
   vpn:
     container_name: curbside-vpn
     image: fardjad/docker-network-exposer
     init: true
-    networks:
-      - curbside
     cap_add:
       - NET_ADMIN
     ports:
@@ -25,13 +20,11 @@ services:
 
   dns:
     container_name: devdns
-    image: ruudud/devdns
-    networks:
-      - curbside
+    image: devdns-patched
     ports:
       - 5300:53/udp
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      NETWORK: curbside
+      NETWORK: ${DOCKER_NETWORK}
       DNS_DOMAIN: docker

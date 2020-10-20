@@ -1,5 +1,6 @@
-This project sets up a =curbside= docker network to be used by other projects
-and provides the configuration to access that network from a dev macOS setup.
+This project connects a DNS server and a VPN so that you can connect to
+containers in a docker network from your macOS host and resolve their names
+using DNS.
 
 * Prerequisites
 
@@ -17,13 +18,27 @@ Make sure to export paths for `openvpn` bin in your ~/.zshrc
 export PATH=/usr/local/opt/openvpn/sbin:$PATH
 #+END_SRC
 
-* Usage
+** Patched =devdns=
+
+1. =git clone https://github.com/jsab/devdns.git=
+2. =cd devdns=
+3. =docker build -t devdns-patched .=
+
+* Installation
 
 1. Run =make install= once to configure your mac.
-2. Run =make up= to create the =curbside= network, launch the VPN to access it
-   and the DNS server that will allow you to resolve names directly from your
-   macos host.
-3. Run =make connect= to connect your mac host to the VPN.
+
+* Usage
+
+1. If you have run this before, =rm client-config/*.ovpn= to clean up any past
+   configurations.
+2. Set =DOCKER_NETWORK= to the docker network you want to connect to. For
+   example:
+   #+begin_src sh
+   export DOCKER_NETWORK=curbside-ad_default
+   #+end_src
+3. Run =docker-compose up -d= to spawn both the VPN and the DNS servers.
+4. Run =make connect= to connect your mac host to the VPN.
 
 The last step should print a message confirming the initialization completed
 successfully:
