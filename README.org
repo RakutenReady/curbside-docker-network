@@ -26,7 +26,7 @@ export PATH=/usr/local/opt/openvpn/sbin:$PATH
 
 * Installation
 
-1. Run =make install= once to configure your mac.
+1. Run =./macos_config.sh= once to configure your mac.
 
 * Usage
 
@@ -38,7 +38,7 @@ export PATH=/usr/local/opt/openvpn/sbin:$PATH
    export DOCKER_NETWORK=curbside-ad_default
    #+end_src
 3. Run =docker-compose up -d= to spawn both the VPN and the DNS servers.
-4. Run =make connect= to connect your mac host to the VPN.
+4. Run =./connectvpn.sh= to connect your mac host to the VPN.
 
 The last step should print a message confirming the initialization completed
 successfully:
