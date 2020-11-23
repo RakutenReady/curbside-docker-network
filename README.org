@@ -47,13 +47,13 @@ Initialization Sequence Completed
 #+end_src
 
 ** Troubleshoot curbside-ad test failures:
-- In case of multiple test failures, check if redis docker is accessible by `ping curbside-ad-redis`
-  - If ping fails with following error: `ping: cannot resolve curbside-ad-redis: Unknown host`
-    - Then clear dns cache with `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder` (verified on macOS Big Sur)
-  - Else, check for `docker-compose logs dns` in curbside-docker-network
-    - If dns logs have content like `Could not get IP for container curbside-ad-redis, probably not on network curbside-ad_default, skipping...`
-      - Then issue is AD folder name mismatch. Rename it to `curbside-ad`.
-      - Restart docker with `docker-compose down` and `docker-compose up -d`
-    - Else collect ip address from logs. It should be like `Added curbside-ad-redis.docker → 172.20.0.4`
-      - Try `ping <curbside-ad-repl-ip-address>`. If ping to ip is successful and `ping curbside-ad-redis` still fails, then flush dns
+- In case of multiple test failures, check if redis docker is accessible by =ping curbside-ad-redis=
+  - If ping fails with following error: =ping: cannot resolve curbside-ad-redis: Unknown host=
+    - Then clear dns cache with =sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder= (verified on macOS Big Sur)
+  - Else, check for =docker-compose logs dns= in curbside-docker-network
+    - If dns logs have content like =Could not get IP for container curbside-ad-redis, probably not on network curbside-ad_default, skipping...=
+      - Then issue is AD folder name mismatch. Rename it to =curbside-ad=.
+      - Restart docker with =docker-compose down= and =docker-compose up -d=
+    - Else collect ip address from logs. It should be like =Added curbside-ad-redis.docker → 172.20.0.4=
+      - Try =ping <curbside-ad-repl-ip-address>=. If ping to ip is successful and =ping curbside-ad-redis= still fails, then flush dns
   - If still not solved, try system reboot
