@@ -57,5 +57,5 @@ Initialization Sequence Completed
     - Else collect ip address from logs. It should be like =Added curbside-ad-redis.docker → 172.20.0.4=
       - Try =ping <curbside-ad-repl-ip-address>=. If ping to ip is successful and =ping curbside-ad-redis= still fails, then flush dns
   - If still not solved, try system reboot
-- In case you have `ERROR: for curbside-vpn  Cannot start service vpn: network <HASH> not found` that means you downed the service container
+- In case you have `ERROR: for curbside-vpn  Cannot start service vpn: network <NetworkID> not found` that means the =NetworkID= of the network you are trying to connect changed (most likely because you did =docker-compose down=) and the current container still refers to the old =NetworkID=. You will have to =docker-compose down= =curbside-docker-network= too.
   and you need to down the network container as well.  The network ID changes every time a container is downed and upped.
